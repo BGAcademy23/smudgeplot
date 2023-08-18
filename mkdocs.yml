@@ -1,5 +1,5 @@
-site_name: TEMPLATE
-edit_uri: https://github.com/bgacademy23/TEMPLATE/blob/main/docs
+site_name: smudgeplot
+edit_uri: https://github.com/bgacademy23/smudgeplot/blob/main/docs
 
 nav:
     - Home: README.md
