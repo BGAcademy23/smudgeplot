@@ -1,5 +1,6 @@
-image: gitpod/workspace-base
-
+image:
+    file: .gitpod.Dockerfile
+    
 tasks:
 - name: install mamba
   command: |
