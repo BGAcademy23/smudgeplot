@@ -1,5 +1,4 @@
-image:
-    file: .gitpod.Dockerfile
+image: gitpod/workspace-base
     
 tasks:
 - name: install mamba
@@ -9,6 +8,9 @@ tasks:
     /workspace/conda/bin/mamba init bash
 
     source ${HOME}/.bashrc
+
+    mamba create -n smudgeplot -c conda-forge r-base r-argparse r-viridis -y
+    mamba activate smudgeplot
 
 vscode:
   extensions:
