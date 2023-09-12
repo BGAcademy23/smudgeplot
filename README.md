@@ -8,9 +8,6 @@ Kamil S. Jaron; Amjad Khalaf
 
 Tree of Life, Wellcome Sanger Institute
 
-Website: <https://www.sanger.ac.uk/group/jaron-group/>  
-K-mer learning materials: <https://github.com/KamilSJaron/oh-know/wiki/Characterization-of-polyploid-genomes-using-k-mer-spectra-analysis>
-
 ## Description
 
 By the end of this session you will be able to:
@@ -122,7 +119,13 @@ A plot with a bunch of smudges, and annotations that are overlapping the smudges
 
 Once you are happy with your smudgeplot, upload it to shared docs with results.
 
+We will discuss the results and then hear from Amjad, what is the actual biological story.
+
 ### Where to go next
 
 - [Smudgeplot v2.5.0](https://github.com/KamilSJaron/smudgeplot/wiki) documentation: most of it applies the same for this development version (2.9.9) and there are plenty of useful things to learn in there
 - original [Genomescope & Smudgeplot paper](https://www.nature.com/articles/s41467-020-14998-3): this describes a lot older version of the software (0.1.3), but the general idea applies.
+- [OH-KNOW k-mer workshop learning materials](https://github.com/KamilSJaron/oh-know/wiki/Characterization-of-polyploid-genomes-using-k-mer-spectra-analysis).
+- If you would be interested finding out more about research in Jaron group, visit our [website](https://www.sanger.ac.uk/group/jaron-group/).
+
+
