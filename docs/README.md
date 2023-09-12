@@ -22,6 +22,11 @@ By the end of this session you will be able to:
 3. Run Smudgeplot and understand the input parameters
 4. Critically evaluate a Smudgeplot
 
+## Session Materials
+
+- [Slides](https://docs.google.com/presentation/d/1cZXcdeurt3YGVvNdSTlFaIBhFRHWXFbaQHcu7y64zJY/edit?usp=sharing)
+- [Gitpod](https://gitpod.io/#https://github.com/BGAcademy23/smudgeplot)
+
 ## Prerequisites
 
 1. Understanding of linux command line basics
