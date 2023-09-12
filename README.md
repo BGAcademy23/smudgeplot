@@ -49,7 +49,10 @@ git clone https://github.com/thegenemyers/FastK
 Now smudgeplot make install smudgeplot R package, compiles the C kernel for searching for k-mer pairs and copy all the executables to `workspace/bin/` (which will be our dedicated spot for executables). 
 
 ```
-cd smudgeplot && make -s INSTALL_PREFIX=/workspace && cd ..
+cd smudgeplot
+make -s INSTALL_PREFIX=/workspace
+R -e 'install.packages(".", repos = NULL, type="source")' # install the R package
+cd ..
 smudgeplot.py -h # test the installation worked out nice
 cd FastK && make
 install -c FastK Fastrm Fastmv Fastcp Fastmerge Histex Tabex Profex Logex Vennex Symmex Haplex Homex Fastcat /workspace/bin/
@@ -82,7 +85,9 @@ Now, that you have a database, you can search for k-mer pairs, but I would advic
 Histex -G SRR8495097 > SRR8495097_k31.hist
 ```
 
-You can visualize this histogram in anyway, one faily easy one is uploading it to genomescope2 webserver: http://qb.cshl.edu/genomescope/genomescope2.0/ (use default ploidy parameter)
+You can visualize this histogram in anyway, one faily easy one is uploading it to genomescope2 webserver: http://qb.cshl.edu/genomescope/genomescope2.0/ (use default ploidy parameter).
+
+Note: `.hist` is quite often used for text histogram files, but `FastK` also generates a binary `.hist` file; don't mix them up! ()
 
 Looking at a k-mer histogram; you should be able to see what is the coverage of the possible genomic k-mers. Also, upload your histogram to [the document](https://docs.google.com/document/d/13SEd0cIx8BATqDtbLFHnwUwRrSfDYmVniVCqXptK6d0/edit?usp=sharing) for our shared results, please. If we look at this example
 
