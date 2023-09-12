@@ -5,8 +5,8 @@ This session is part of [**Biodiversity Genomics Academy 2023**](https://BGA23.o
 ## Session Leader(s)
 
 Kamil S. Jaron; Amjad Khalaf
-Tree of Life  
-Wellcome Sanger Institute
+
+Tree of Life, Wellcome Sanger Institute
 
 Website: <https://www.sanger.ac.uk/group/jaron-group/>  
 K-mer learning materials: <https://github.com/KamilSJaron/oh-know/wiki/Characterization-of-polyploid-genomes-using-k-mer-spectra-analysis>
@@ -53,15 +53,14 @@ Now smudgeplot make install smudgeplot R package, compiles the C kernel for sear
 
 ```
 cd smudgeplot && make -s INSTALL_PREFIX=/workspace && cd ..
-cd FastK && make FastK Histex # at your computer, you probably want to compile the whole package, then you type just make without specifying the programs you want
-install -c Histex FastK /workspace/bin/
+smudgeplot.py -h # test the installation worked out nice
+cd FastK && make
+install -c FastK Fastrm Fastmv Fastcp Fastmerge Histex Tabex Profex Logex Vennex Symmex Haplex Homex Fastcat /workspace/bin/
+FastK # test the installation worked out nice
+cd ..
 ```
 
-Now the software we need is installed, all we need is to download some data; There are 8 datasets we suggest; Pick the one that is corresponding to your breakout room.
-
-TODO: get them urls
-
-You can get the data from ENA ftp server with a simple `wget` command. E.g.
+Now the software we need is installed, all we need is to download some data; There are 8 datasets for the 8 breakout session, here is a [table of accessions](https://docs.google.com/document/d/13SEd0cIx8BATqDtbLFHnwUwRrSfDYmVniVCqXptK6d0/edit?usp=sharing), we will use the same document to upload our results too; Pick the one that is corresponding to your breakout room, and replace the example one by one of yours. Fetch the data using `wget` command. E.g.
 
 ```
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR926/SRR926341/SRR926341_[12].fastq.gz
@@ -86,24 +85,27 @@ Now, that you have a database, you can search for k-mer pairs, but I would advic
 Histex -G SRR8495097 > SRR8495097_k31.hist
 ```
 
-You can visualize this histogram in anyway, one faily easy one is uploading it to genomescope2 webserver: http://qb.cshl.edu/genomescope/genomescope2.0/
+You can visualize this histogram in anyway, one faily easy one is uploading it to genomescope2 webserver: http://qb.cshl.edu/genomescope/genomescope2.0/ (use default ploidy parameter)
 
-Looking at a k-mer histogram; you should be able to see what is the coverage of the possible genomic k-mers. If we look at this example
+Looking at a k-mer histogram; you should be able to see what is the coverage of the possible genomic k-mers. Also, upload your histogram to [the document](https://docs.google.com/document/d/13SEd0cIx8BATqDtbLFHnwUwRrSfDYmVniVCqXptK6d0/edit?usp=sharing) for our shared results, please. If we look at this example
 
-TODO
+![example](
+http://qb.cshl.edu/genomescope/genomescope2.0/user_data/QQbW8zXct8FErXPSt9Mw/linear_plot.png)
 
-A fair threshold between errors and genomic k-mers is TODO. Usually, no dataset should have this threshold <10, but what is sensible really depends on the data!
+In this example, a meaningful error threshold would be 40x. As a rule of thumb, no dataset should have this threshold <10, and it is not the end of the world if we lose a bit of the real genomic k-mers (as long as there is enough signal). However these are just some gudances, what is sensible really depends on each individual datasets!
 
 ### Run smudgeplot
 
-TODO: chabnge it to smudgeplot interface
+The error threshold is sepcified by the '-L' parameter. We have 4 cores in the GitPod, so you can also run the k-mer pair search in paralel (parameter `-t`). This command will interanlly call a C-kernel optimised for the searched designed by Gene Myers. When executing, don't forget to use names of YOUR sample, not the example one.
 
 ```
-PloidyPlot -e12 -k -v -T4 -oSRR8495097_k31_pairs SRR8495097
+smudgeplot.py hetmers -L 30 -t 4 --verbose -o SRR926341_k31_pairs SRR926341.ktab
 ```
 
 and finally, once the k-mer pairs are done (look at the first few lines of the output file to be sure it makes sense), you can finally plot the smudgeplot
 
 ```
-smudgeplot.py plot -n 15 -t SRR8495097 -o SRR8495097_k31_smudgeplot SRR8495097_k31_pairs_text.smu 
+smudgeplot.py plot -t SRR926341 -o SRR926341_k31_smudgeplot SRR926341_k31_pairs_text.smu
 ``
+
+How does it look? If the plot looks off, rerun with '-n' and provide a number corresponding to the 1n peak in your genomeplot such as '-n 50'
